@@ -4,7 +4,7 @@ from .models import Post
 from django.contrib.auth.models import User
 
 def post_list(request):
-    user = User.objects.all()[0]
-    misposts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/post_list.html', {'posts': misposts,
-                                                   'mi_usuario': user})
+    user = User.objects.all()
+    misposts = Post.objects.all()
+    arguments = {'posts': misposts, 'mi_usuario': user}
+    return render(request, 'blog/post_list.html', arguments)
